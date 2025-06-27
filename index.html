@@ -94,4 +94,129 @@
       padding: 0.5rem;
       font-size: 1rem;
       margin-bottom: 1rem;
-      border: 1
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .modal-content button {
+      width: 100%;
+      background-color: #28a745;
+      border-color: #28a745;
+      color: white;
+      font-weight: bold;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  Halal Life Hub 🌙✨
+</header>
+
+<main>
+  <button id="btnTravelGuide">Free Travel Guide ✈️</button>
+  <button id="btnRecipeBook">My Recipe Book 🍳</button>
+  <button id="btnHalalMeatFinder">Halal Meat Finder 🥩</button>
+  <button id="btnDuaaJournal">Duaa Business Journal 📖</button>
+</main>
+
+<footer>
+  with barakah
+</footer>
+
+<!-- Modal for Halal Meat Finder phone form -->
+<div id="meatFinderModal" class="modal" aria-hidden="true">
+  <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="close-btn" aria-label="Close modal">&times;</button>
+    <h2 id="modalTitle">Access Halal Meat Finder</h2>
+    <form id="phoneForm">
+      <label for="phoneInput">Please enter your phone number:</label>
+      <input type="tel" id="phoneInput" name="phoneInput" placeholder="+1 234 567 8900" pattern="[\+0-9\s\-]+" required />
+      <button type="submit">Submit</button>
+    </form>
+    <p id="thankYouMessage" style="display:none; margin-top: 1rem; color: green; font-weight: 600;">
+      Thank you! We will contact you shortly.
+    </p>
+  </div>
+</div>
+
+<script>
+  // Buttons
+  const btnTravelGuide = document.getElementById('btnTravelGuide');
+  const btnRecipeBook = document.getElementById('btnRecipeBook');
+  const btnHalalMeatFinder = document.getElementById('btnHalalMeatFinder');
+  const btnDuaaJournal = document.getElementById('btnDuaaJournal');
+
+  // Modal Elements
+  const modal = document.getElementById('meatFinderModal');
+  const closeBtn = modal.querySelector('.close-btn');
+  const phoneForm = document.getElementById('phoneForm');
+  const thankYouMessage = document.getElementById('thankYouMessage');
+
+  // Example URLs - replace these with your actual URLs for download or pages
+  const travelGuideURL = 'YOUR_TRAVEL_GUIDE_DOWNLOAD_LINK_HERE.pdf';
+  const recipeBookURL = 'YOUR_RECIPE_BOOK_DOWNLOAD_LINK_HERE.pdf';
+  const duaaJournalURL = 'YOUR_DUAA_JOURNAL_DOWNLOAD_LINK_HERE.pdf';
+
+  // Button click handlers
+  btnTravelGuide.addEventListener('click', () => {
+    window.open(travelGuideURL, '_blank');
+  });
+
+  btnRecipeBook.addEventListener('click', () => {
+    window.open(recipeBookURL, '_blank');
+  });
+
+  btnHalalMeatFinder.addEventListener('click', () => {
+    thankYouMessage.style.display = 'none';
+    phoneForm.style.display = 'block';
+    phoneForm.reset();
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.getElementById('phoneInput').focus();
+  });
+
+  btnDuaaJournal.addEventListener('click', () => {
+    window.open(duaaJournalURL, '_blank');
+  });
+
+  // Close modal
+  closeBtn.addEventListener('click', () => {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+  });
+
+  // Close modal on outside click
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+  });
+
+  // Handle phone form submission
+  phoneForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const phoneValue = phoneForm.phoneInput.value.trim();
+    if (phoneValue) {
+      // Here you can add your form submission logic (e.g., send to API, Google Sheets, etc.)
+      console.log('Phone number submitted:', phoneValue);
+
+      // Show thank you message and hide form
+      phoneForm.style.display = 'none';
+      thankYouMessage.style.display = 'block';
+    }
+  });
+</script>
+
+</body>
+</html>
