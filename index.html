@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Gold Nugget AI • Soft Halal Life Hub</title>
+<title>Gold Nugget AI • Halal Life Hub</title>
 <style>
 :root{
   --green:#009688;
@@ -28,7 +28,7 @@ ul.links{
   flex-direction:column;
   gap:1rem;
 }
-ul.links li a{
+.btnlike{
   display:block;
   width:100%;
   background:var(--white);
@@ -42,7 +42,7 @@ ul.links li a{
   box-shadow:0 4px 14px rgba(0,0,0,.06);
   transition:transform .15s, background .15s;
 }
-ul.links li a:hover{
+.btnlike:hover{
   transform:scale(1.04);
   background:var(--green);
   color:#fff;
@@ -59,93 +59,69 @@ footer{
   color:#777;
   text-align:center;
 }
-
-/* Popup */
-#subscribe-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.55);
-  backdrop-filter:blur(2px);
+#phoneForm{
   display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
+  flex-direction:column;
+  gap:0.75rem;
 }
-.popup-box{
-  background:#fff;
-  border-radius:1rem;
-  padding:2rem 1.5rem;
-  max-width:420px;
-  width:90%;
-  text-align:center;
-  box-shadow:0 8px 24px rgba(0,0,0,.15);
+#phoneForm input{
+  padding:0.9rem 1rem;
+  border:2px solid var(--green);
+  border-radius:999px;
+  font-size:1rem;
+  outline:none;
 }
-.popup-box h2{color:var(--green);margin-bottom:.5rem}
-.popup-box p{color:#444;margin-bottom:1rem;font-size:1rem}
-.close-btn{
-  margin-top:1.2rem;
-  background:var(--green-dark);
+#phoneForm button{
+  background:var(--green);
   color:#fff;
   border:none;
-  padding:.75rem 1rem;
-  border-radius:.6rem;
+  border-radius:999px;
+  padding:1rem 1.25rem;
+  font-size:1.05rem;
+  font-weight:600;
   cursor:pointer;
-  font-size:1rem;
+  box-shadow:0 4px 14px rgba(0,0,0,.06);
+  transition:transform .15s, background .15s;
+}
+#phoneForm button:hover{
+  transform:scale(1.04);
+  background:var(--green-dark);
 }
 </style>
 </head>
 <body>
 
-<!-- Popup overlay -->
-<div id="subscribe-overlay">
-  <div class="popup-box">
-    <h2>Join Gold Nugget AI 💌</h2>
-    <p>Soft automation tips, halal income insights & barakah reminders each Friday.</p>
-    <!-- Klaviyo Form Embed -->
-    <div class="klaviyo-form-RQLMim"></div>
-    <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=YmMdxL"></script>
-
-    <button class="close-btn" id="enterSite">Enter site</button>
-  </div>
-</div>
-
 <main>
   <header>
     <h1>Gold Nugget AI</h1>
-    <p>Intentional halal wealth & soft-life resources</p>
+    <p>intentional food and intentional wealth 🕌</p>
   </header>
 
+  <!-- Phone gating form -->
+  <form id="phoneForm">
+    <input type="tel" name="phone" placeholder="Enter your phone number to access Halal Meat Finder" required>
+    <button type="submit">Access Halal Meat Finder 🥩</button>
+  </form>
+
   <ul class="links">
-    <li><a href="#" id="newsletterLink">💌 Join the Newsletter</a></li>
-    <li><a href="https://example.com/soft-ai-tools" target="_blank">🤖 Halal AI Tools</a></li>
-    <li><a href="halal-log.html">🥩 Halal Meat Tracker</a></li>
-    <li><a href="https://example.com/planner.pdf" target="_blank">📓 Download Soft Business Planner</a></li>
-    <li><a href="https://instagram.com/yourpage" target="_blank">📸 Instagram</a></li>
+    <li><a class="btnlike" href="https://halallivingislandlife.com/duaa-business-planner.pdf" target="_blank">📓 Duaa Business Planner (365 Duaa Journal)</a></li>
+    <li><a class="btnlike" href="https://halallivingislandlife.com/guide.pdf" target="_blank">📘 Barakah Automation Guide</a></li>
+    <li><a class="btnlike" href="https://halallivingislandlife.com/quranic-journal" target="_blank">📔 Free Quranic Journal Template</a></li>
+    <li><a class="btnlike" href="https://instagram.com/halal.pr" target="_blank">📸 Instagram</a></li>
   </ul>
 
-  <footer>© 2025 Gold Nugget AI • With barakah 🌿</footer>
+  <footer>© 2025 Gold Nugget AI • halal life hub 🕌</footer>
 </main>
 
 <script>
-const overlay = document.getElementById('subscribe-overlay');
-const closeBtn = document.getElementById('enterSite');
-const newsletterBtn = document.getElementById('newsletterLink');
-
-// 1️⃣ Auto‑show only if never shown before
-if (localStorage.getItem('gn-popup-shown') === 'yes') {
-  overlay.style.display = 'none';
-}
-
-// 2️⃣ Record flag & hide forever after first close
-closeBtn.addEventListener('click', () => {
-  localStorage.setItem('gn-popup-shown', 'yes');
-  overlay.style.display = 'none';
-});
-
-// 3️⃣ Allow manual reopen via button
-newsletterBtn.addEventListener('click', (e) => {
+// Phone form gating: store phone & redirect
+document.getElementById('phoneForm').addEventListener('submit', function(e){
   e.preventDefault();
-  overlay.style.display = 'flex';
+  const phone = this.phone.value.trim();
+  if(phone){
+    localStorage.setItem('gn_phone', phone);
+    window.location.href = 'halal-log.html';
+  }
 });
 </script>
 </body>
