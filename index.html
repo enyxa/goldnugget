@@ -5,29 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Halal Life Hub</title>
   <style>
+    /* --- General Styling --- */
     body {
       font-family: Arial, sans-serif;
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
       background: #fff;
       color: #222;
     }
+
+    /* --- Header and Footer --- */
     header, footer {
       background: #f5f5f5;
       padding: 1rem 2rem;
       text-align: center;
       font-weight: bold;
       font-size: 1.25rem;
-      user-select: none;
     }
+
     footer {
       margin-top: auto;
       font-size: 1rem;
       font-weight: normal;
       color: #666;
     }
+
+    /* --- Main Buttons --- */
     main {
       padding: 2rem;
       flex-grow: 1;
@@ -38,6 +44,7 @@
       margin: 0 auto;
       width: 90%;
     }
+
     button {
       padding: 1rem;
       font-size: 1.1rem;
@@ -51,25 +58,28 @@
       justify-content: center;
       align-items: center;
       gap: 0.5rem;
-      user-select: none;
     }
+
     button:hover {
       background: #007BFF;
       color: white;
     }
-    /* Modal styles */
+
+    /* --- Modal Popup Styling --- */
     .modal {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0, 0, 0, 0.6);
       display: none;
       justify-content: center;
       align-items: center;
       z-index: 1000;
     }
+
     .modal.active {
       display: flex;
     }
+
     .modal-content {
       background: white;
       padding: 2rem;
@@ -79,16 +89,19 @@
       text-align: center;
       position: relative;
     }
+
     .modal-content h2 {
       margin-top: 0;
       margin-bottom: 1rem;
     }
+
     .modal-content label {
       display: block;
       margin-bottom: 0.5rem;
       font-weight: 600;
       text-align: left;
     }
+
     .modal-content input[type="tel"] {
       width: 100%;
       padding: 0.5rem;
@@ -97,6 +110,7 @@
       border: 1px solid #ccc;
       border-radius: 4px;
     }
+
     .modal-content button {
       width: 100%;
       background-color: #28a745;
@@ -104,6 +118,7 @@
       color: white;
       font-weight: bold;
     }
+
     .close-btn {
       position: absolute;
       top: 10px;
@@ -118,105 +133,112 @@
 </head>
 <body>
 
-<header>
-  Halal Life Hub 🌙✨
-</header>
+  <!-- Header -->
+  <header>
+    Halal Life Hub 🌙✨
+  </header>
 
-<main>
-  <button id="btnTravelGuide">Free Travel Guide ✈️</button>
-  <button id="btnRecipeBook">My Recipe Book 🍳</button>
-  <button id="btnHalalMeatFinder">Halal Meat Finder 🥩</button>
-  <button id="btnDuaaJournal">Duaa Business Journal 📖</button>
-</main>
+  <!-- Main Buttons -->
+  <main>
+    <button id="btnTravelGuide">Free Travel Guide ✈️</button>
+    <button id="btnRecipeBook">My Recipe Book 🍳</button>
+    <button id="btnHalalMeatFinder">Halal Meat Finder 🥩</button>
+    <button id="btnDuaaJournal">Duaa Business Journal 📖</button>
+    <button id="btnInstagram">Instagram Page 📷</button>
+  </main>
 
-<footer>
-  with barakah
-</footer>
+  <!-- Footer -->
+  <footer>
+    with barakah
+  </footer>
 
-<!-- Modal for Halal Meat Finder phone form -->
-<div id="meatFinderModal" class="modal" aria-hidden="true">
-  <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <button class="close-btn" aria-label="Close modal">&times;</button>
-    <h2 id="modalTitle">Access Halal Meat Finder</h2>
-    <form id="phoneForm">
-      <label for="phoneInput">Please enter your phone number:</label>
-      <input type="tel" id="phoneInput" name="phoneInput" placeholder="+1 234 567 8900" pattern="[\+0-9\s\-]+" required />
-      <button type="submit">Submit</button>
-    </form>
-    <p id="thankYouMessage" style="display:none; margin-top: 1rem; color: green; font-weight: 600;">
-      Thank you! We will contact you shortly.
-    </p>
+  <!-- Modal: Halal Meat Finder Phone Form -->
+  <div id="meatFinderModal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="close-btn" aria-label="Close modal">&times;</button>
+      <h2 id="modalTitle">Access Halal Meat Finder</h2>
+      <form id="phoneForm">
+        <label for="phoneInput">Please enter your phone number:</label>
+        <input type="tel" id="phoneInput" name="phoneInput" placeholder="+1 234 567 8900" pattern="[\+0-9\s\-]+" required />
+        <button type="submit">Submit</button>
+      </form>
+      <p id="thankYouMessage" style="display:none; margin-top: 1rem; color: green; font-weight: 600;">
+        Thank you! We will contact you shortly.
+      </p>
+    </div>
   </div>
-</div>
 
-<script>
-  // Buttons
-  const btnTravelGuide = document.getElementById('btnTravelGuide');
-  const btnRecipeBook = document.getElementById('btnRecipeBook');
-  const btnHalalMeatFinder = document.getElementById('btnHalalMeatFinder');
-  const btnDuaaJournal = document.getElementById('btnDuaaJournal');
+  <!-- Scripts -->
+  <script>
+    // Buttons
+    const btnTravelGuide = document.getElementById('btnTravelGuide');
+    const btnRecipeBook = document.getElementById('btnRecipeBook');
+    const btnHalalMeatFinder = document.getElementById('btnHalalMeatFinder');
+    const btnDuaaJournal = document.getElementById('btnDuaaJournal');
+    const btnInstagram = document.getElementById('btnInstagram');
 
-  // Modal Elements
-  const modal = document.getElementById('meatFinderModal');
-  const closeBtn = modal.querySelector('.close-btn');
-  const phoneForm = document.getElementById('phoneForm');
-  const thankYouMessage = document.getElementById('thankYouMessage');
+    // Modal
+    const modal = document.getElementById('meatFinderModal');
+    const closeBtn = modal.querySelector('.close-btn');
+    const phoneForm = document.getElementById('phoneForm');
+    const thankYouMessage = document.getElementById('thankYouMessage');
 
-  // Example URLs - replace these with your actual URLs for download or pages
-  const travelGuideURL = 'YOUR_TRAVEL_GUIDE_DOWNLOAD_LINK_HERE.pdf';
-  const recipeBookURL = 'YOUR_RECIPE_BOOK_DOWNLOAD_LINK_HERE.pdf';
-  const duaaJournalURL = 'YOUR_DUAA_JOURNAL_DOWNLOAD_LINK_HERE.pdf';
+    // Replace these with real URLs
+    const travelGuideURL = 'https://yourdomain.com/travel-guide.pdf';
+    const recipeBookURL = 'https://yourdomain.com/recipe-book.pdf';
+    const duaaJournalURL = 'https://yourdomain.com/duaa-business-journal.pdf';
+    const instagramURL = 'https://instagram.com/YOUR_USERNAME';
 
-  // Button click handlers
-  btnTravelGuide.addEventListener('click', () => {
-    window.open(travelGuideURL, '_blank');
-  });
+    // Event Listeners
+    btnTravelGuide.addEventListener('click', () => {
+      window.open(travelGuideURL, '_blank');
+    });
 
-  btnRecipeBook.addEventListener('click', () => {
-    window.open(recipeBookURL, '_blank');
-  });
+    btnRecipeBook.addEventListener('click', () => {
+      window.open(recipeBookURL, '_blank');
+    });
 
-  btnHalalMeatFinder.addEventListener('click', () => {
-    thankYouMessage.style.display = 'none';
-    phoneForm.style.display = 'block';
-    phoneForm.reset();
-    modal.classList.add('active');
-    modal.setAttribute('aria-hidden', 'false');
-    document.getElementById('phoneInput').focus();
-  });
+    btnHalalMeatFinder.addEventListener('click', () => {
+      thankYouMessage.style.display = 'none';
+      phoneForm.style.display = 'block';
+      phoneForm.reset();
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.getElementById('phoneInput').focus();
+    });
 
-  btnDuaaJournal.addEventListener('click', () => {
-    window.open(duaaJournalURL, '_blank');
-  });
+    btnDuaaJournal.addEventListener('click', () => {
+      window.open(duaaJournalURL, '_blank');
+    });
 
-  // Close modal
-  closeBtn.addEventListener('click', () => {
-    modal.classList.remove('active');
-    modal.setAttribute('aria-hidden', 'true');
-  });
+    btnInstagram.addEventListener('click', () => {
+      window.open(instagramURL, '_blank');
+    });
 
-  // Close modal on outside click
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
+    // Modal Close Actions
+    closeBtn.addEventListener('click', () => {
       modal.classList.remove('active');
       modal.setAttribute('aria-hidden', 'true');
-    }
-  });
+    });
 
-  // Handle phone form submission
-  phoneForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const phoneValue = phoneForm.phoneInput.value.trim();
-    if (phoneValue) {
-      // Here you can add your form submission logic (e.g., send to API, Google Sheets, etc.)
-      console.log('Phone number submitted:', phoneValue);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+    });
 
-      // Show thank you message and hide form
-      phoneForm.style.display = 'none';
-      thankYouMessage.style.display = 'block';
-    }
-  });
-</script>
+    // Form Submission
+    phoneForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const phoneValue = phoneForm.phoneInput.value.trim();
+      if (phoneValue) {
+        console.log('Phone number submitted:', phoneValue);
+        phoneForm.style.display = 'none';
+        thankYouMessage.style.display = 'block';
+      }
+    });
+  </script>
 
 </body>
 </html>
