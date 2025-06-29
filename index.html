@@ -5,105 +5,86 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Halal Life Hub</title>
 
-  <!-- ------  Core Styles  ------ -->
   <style>
-    :root{
-      --primary:#5fbf8f;          /* soft green */
-      --primary-dark:#359468;
-      --text:#263238;            /* deep muted charcoal */
-      --bg-white:rgba(255,255,255,0.85);
+    :root {
+      --primary: #5fbf8f;
+      --primary-dark: #359468;
+      --text: #263238;
+      --bg-white: rgba(255, 255, 255, 0.85);
     }
 
-    /*  Reset & Layout  */
-    *{box-sizing:border-box;margin:0;padding:0;}
-    body{
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
       font-family: "Helvetica Neue", Arial, sans-serif;
-      color:var(--text);
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
-      background:url("beach-bg.jpg") center/cover no-repeat fixed;
-      backdrop-filter:blur(2px);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: url("beach-bg.jpg") center/cover no-repeat fixed;
+      backdrop-filter: blur(2px);
     }
 
-    header,footer{
-      background:var(--bg-white);
-      padding:1rem 2rem;
-      text-align:center;
-      font-weight:bold;
-      border-radius:1rem;
-      margin:1rem auto 0;
-      width:clamp(250px, 80%, 800px);
-    }
-    header{font-size:1.5rem;}
-    footer{font-size:1rem;margin-top:auto;}
-
-    /*  Main Button Panel  */
-    main{
-      display:flex;
-      flex-direction:column;
-      gap:1rem;
-      width:clamp(250px, 90%, 420px);
-      margin:2.5rem auto;
-    }
-    button{
-      padding:1rem;
-      font-size:1.1rem;
-      background:var(--bg-white);
-      color:var(--primary-dark);
-      border:2px solid var(--primary);
-      border-radius:1.5rem;               /* nice round pills */
-      box-shadow:0 3px 6px rgba(0,0,0,0.08);
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:.5rem;
-      cursor:pointer;
-      transition:.25s;
-    }
-    button:hover{
-      background:var(--primary);
-      color:#fff;
-      transform:translateY(-2px);
-      box-shadow:0 6px 12px rgba(0,0,0,0.12);
+    header,
+    footer {
+      background: var(--bg-white);
+      padding: 1rem 2rem;
+      text-align: center;
+      font-weight: bold;
+      border-radius: 1rem;
+      margin: 1rem auto 0;
+      width: clamp(250px, 80%, 800px);
     }
 
-    /*  Modal  */
-    .modal{
-      position:fixed;inset:0;
-      display:none;place-items:center;
-      background:rgba(0,0,0,.55);
-      z-index:1000;
+    header {
+      font-size: 1.5rem;
     }
-    .modal.active{display:grid;}
-    .modal-content{
-      background:var(--bg-white);
-      padding:2rem;
-      border-radius:1.25rem;
-      width:clamp(260px,90%,380px);
-      text-align:center;
-      position:relative;
-      box-shadow:0 8px 16px rgba(0,0,0,0.25);
-      animation:pop .35s ease-out;
-    }
-    @keyframes pop{0%{transform:scale(.8);opacity:0;}100%{transform:scale(1);opacity:1;}}
 
-    .close-btn{
-      position:absolute;top:10px;right:15px;
-      background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--primary-dark);
+    footer {
+      font-size: 1rem;
+      margin-top: auto;
     }
-    .modal-content input[type="tel"]{
-      width:100%;padding:.6rem;border:1px solid #bbb;border-radius:.75rem;margin:1rem 0;font-size:1rem;
-    }
-    .modal-content button{
-      background:var(--primary-dark);border:none;color:#fff;width:100%;
-      border-radius:1.25rem;padding:.8rem;font-weight:bold;transition:.25s;
-    }
-    .modal-content button:hover{background:var(--primary);}
 
-    /* Small screens love! */
-    @media(max-width:420px){
-      header,footer{width:95%;}
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: clamp(250px, 90%, 420px);
+      margin: 4rem auto;
+    }
+
+    button {
+      padding: 1rem;
+      font-size: 1.1rem;
+      background: var(--bg-white);
+      color: var(--primary-dark);
+      border: 2px solid var(--primary);
+      border-radius: 1.5rem;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    button:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    @media (max-width: 420px) {
+      header,
+      footer {
+        width: 95%;
+      }
     }
   </style>
 </head>
@@ -114,90 +95,16 @@
     Halal Life Hub 🌙✨
   </header>
 
-  <!-- ===== Main Buttons ===== -->
+  <!-- ===== Single Button ===== -->
   <main>
-    <button id="btnTravelGuide">Free Travel Guide ✈️</button>
-    <button id="btnRecipeBook">My Recipe Book 🍳</button>
-    <button id="btnHalalMeatFinder">Halal Meat Finder 🥩</button>
-    <button id="btnDuaaJournal">Duaa Business Journal 📖</button>
-    <button id="btnInstagram">Instagram Page 📷</button>
+    <button onclick="window.location.href='https://halalpr.kit.com/87b2050e63'">
+      Join the Hub 🌴
+    </button>
   </main>
 
   <!-- ===== Footer ===== -->
   <footer>
     with barakah
   </footer>
-
-  <!-- ===== Modal for Halal Meat Finder ===== -->
-  <div id="meatFinderModal" class="modal" aria-hidden="true">
-    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="close-btn" aria-label="Close modal">&times;</button>
-      <h2 id="modalTitle">Access Halal Meat Finder</h2>
-      <form id="phoneForm">
-        <label for="phoneInput">Phone number:</label>
-        <input type="tel" id="phoneInput" name="phoneInput" placeholder="+1 234 567 8900" pattern="[\+0-9\s\-]+" required />
-        <button type="submit">Submit</button>
-      </form>
-      <p id="thankYouMessage" style="display:none;margin-top:1rem;font-weight:600;color:var(--primary-dark);">
-        Thank you! We’ll be in touch soon.
-      </p>
-    </div>
-  </div>
-
-  <!-- ===== Scripts ===== -->
-  <script>
-    /* ---------  Link Variables --------- */
-    const travelGuideURL  = 'https://yourdomain.com/travel-guide.pdf';
-    const recipeBookURL   = 'https://yourdomain.com/recipe-book.pdf';
-    const duaaJournalURL  = 'https://yourdomain.com/duaa-business-journal.pdf';
-    const instagramURL    = 'https://instagram.com/halal.pr';
-
-    /* ---------  Buttons --------- */
-    const btnTravelGuide     = document.getElementById('btnTravelGuide');
-    const btnRecipeBook      = document.getElementById('btnRecipeBook');
-    const btnHalalMeatFinder = document.getElementById('btnHalalMeatFinder');
-    const btnDuaaJournal     = document.getElementById('btnDuaaJournal');
-    const btnInstagram       = document.getElementById('btnInstagram');
-
-    /* ---------  Modal Elements --------- */
-    const modal         = document.getElementById('meatFinderModal');
-    const closeBtn      = modal.querySelector('.close-btn');
-    const phoneForm     = document.getElementById('phoneForm');
-    const thankYouMsg   = document.getElementById('thankYouMessage');
-
-    /* ---------  Button Actions --------- */
-    btnTravelGuide.onclick  = () => window.open(travelGuideURL, '_blank');
-    btnRecipeBook.onclick   = () => window.open(recipeBookURL,  '_blank');
-    btnDuaaJournal.onclick  = () => window.open(duaaJournalURL, '_blank');
-    btnInstagram.onclick    = () => window.open(instagramURL,   '_blank');
-
-    btnHalalMeatFinder.onclick = () => {
-      thankYouMsg.style.display='none';
-      phoneForm.style.display='block';
-      phoneForm.reset();
-      modal.classList.add('active');
-      modal.ariaHidden = "false";
-      document.getElementById('phoneInput').focus();
-    };
-
-    /* ---------  Modal Closing --------- */
-    closeBtn.onclick = () => closeModal();
-    modal.onclick    = e => (e.target === modal) && closeModal();
-    function closeModal(){
-      modal.classList.remove('active');
-      modal.ariaHidden = "true";
-    }
-
-    /* ---------  Form Submission --------- */
-    phoneForm.onsubmit = e =>{
-      e.preventDefault();
-      const phone = phoneForm.phoneInput.value.trim();
-      if(phone){
-        console.log('Phone submitted:', phone); // ← replace with API call
-        phoneForm.style.display='none';
-        thankYouMsg.style.display='block';
-      }
-    }
-  </script>
 </body>
 </html>
